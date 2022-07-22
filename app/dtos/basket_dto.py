@@ -5,7 +5,7 @@ from app.models.basket import Basket
 
 
 class BasketDTO(AbstractDTO):
-    def __init__(self, basket: Basket):
+    def __init__(self):
         self.basketid = None
         self.basketclosed = None
         self.user = None
@@ -24,5 +24,5 @@ class BasketDTO(AbstractDTO):
 
         return basket_dto
 
-    def get_json(self):
+    def get_json_parsable(self):
         pass

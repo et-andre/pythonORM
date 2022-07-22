@@ -1,4 +1,7 @@
-from app.mappers.abstract_mapper    import AbstractMapper
+from app.dtos.item_dto import ItemDTO
+from app.forms.item.item_form import ItemForm
+from app.mappers.abstract_mapper import AbstractMapper
+from app.models.item import Item
 
 from app.models.item                import Item
 from app.dtos.item_dto              import ItemDTO
@@ -11,13 +14,9 @@ class ItemMapper(AbstractMapper):
 
     @staticmethod
     def form_to_entity(form, item: Item):
-        if isinstance(form, ItemNewForm):
-            item.itemname        = form.itemname.data
+        if isinstance(form, ItemForm):
+            item.itemname = form.itemname.data
             item.itemdescription = form.itemdescription.data
-            item.itemstock       = form.itemstock.data
-
-        #elif isinstance(form, UserUpdateForm):
-        #    item.itemdescription = form.itemdescription.data
-        #    item.itemstock       = form.itemstock.data
+            item.itemstock = form.itemstock.data
 
         return item
