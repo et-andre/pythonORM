@@ -1,9 +1,11 @@
-from flask import render_template
+from flask                          import render_template, request, redirect, url_for
 
 from app import app
-from app.services.item_service import ItemService
+from app.services.item_service      import ItemService
 
-itemService = ItemService
+from app.forms.item.item_new_form   import ItemNewForm
+
+itemService = ItemService()
 
 @app.route('/items')
 def getItemList():
@@ -19,7 +21,7 @@ def newItem():
 
     if request.method == 'POST':
         if form.validate():
-            item = ItemService.insert(form)
+            item = itemService.insert(form)
 
             return redirect(url_for('getItemDetails', itemid=item.itemid))
 

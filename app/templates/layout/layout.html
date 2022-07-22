@@ -10,6 +10,7 @@
                 {% if session.get('userid') %}
                     <a href="{{ url_for('profile') }}">Profile</a>
                     <a href="{{ url_for('logout') }}">Logout</a>
+                    <a href="{{ url_for('newItem') }}">New Item</a>
                 {% else %}
                     <a href="{{ url_for('login') }}">Login</a>
                     <a href="{{ url_for('register') }}">Register</a>

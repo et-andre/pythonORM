@@ -1,12 +1,13 @@
-from app.dtos.item_dto import ItemDTO
-from app.mappers.abstract_mapper import AbstractMapper
-from app.models.item import Item
+from app.mappers.abstract_mapper    import AbstractMapper
 
+from app.models.item                import Item
+from app.dtos.item_dto              import ItemDTO
+from app.forms.item.item_new_form   import ItemNewForm
 
 class ItemMapper(AbstractMapper):
     @staticmethod
     def entity_to_dto(item: Item):
-        ItemDTO.build_from_entity(item)
+        return ItemDTO.build_from_entity(item)
 
     @staticmethod
     def form_to_entity(form, item: Item):

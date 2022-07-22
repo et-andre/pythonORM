@@ -1,0 +1,18 @@
+pg_dump -d app -h 127.0.0.1 -p 5435 -U app -d app -x -O -Fc -f 2022_07_20_1356_app.backup
+
+-d = database
+-O = no owner 
+-x = don't save privileges
+-F format (c = custom backup format)
+-U = db user
+-p = db port
+-h = db host
+-f = output file
+
+pg_restore -c -U app -d app -O --role=app 2022_07_20_1356_app.backup -h 127.0.0.1 -p 5435
+​
+-c = clear database
+-U = db user
+-d = database name
+-O = no owner
+--role = restoration role
